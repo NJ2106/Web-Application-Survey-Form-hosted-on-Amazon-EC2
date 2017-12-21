@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</h:head>
+<h:body>
+<h:form>
+  
+	   <h:panelGrid columns="2" cellpadding="5">
+	   
+	   	<p:outputLabel value="First Name:" for="FName"></p:outputLabel>
+        <p:inputText value="#{s.fname}" id="FName"
+        					required="true"
+        					requiredMessage="Enter your First Name"
+        					validatorMessage="Name should not be more than 15 characters and ONLY Alphabets">
+        					<f:validateLength maximum="15"></f:validateLength>
+        					<f:validateRegex pattern="[A-Za-z]+"></f:validateRegex>
+        					</p:inputText>
+        					<p:message for="FName"></p:message><br/>
+       
+        <p:outputLabel value="Last Name:" for="LName"></p:outputLabel>
+        <p:inputText value="#{s.lname}" id="LName"
+                			required="true"
+        					requiredMessage="Enter your Last Name"
+        					validatorMessage="Name should not be more than 15 characters">
+        					<f:validateLength maximum="15"></f:validateLength>
+        					<f:validateRegex pattern="[A-Za-z]+"></f:validateRegex>
+        					 </p:inputText> 
+        					 <p:message for="LName"></p:message><br/>
+                            
+       <p:outputLabel value="Street Address:" for="STName"></p:outputLabel>
+       <p:inputText value="#{s.saddress}" id="STName" 
+               			required="true"
+        					requiredMessage="Enter your Last Name"
+        					validatorMessage="Name should not be more than 30 characters">
+        					<!-- <f:validateRegex pattern="[A-Za-z]+" /> -->
+						<f:validateLength maximum="15"/>
+        					<f:validateLength minimum="0" maximum="30"></f:validateLength>
+        					</p:inputText>
+               			 <p:message for="STName"></p:message><br/>
+               			 
+        <p:outputLabel value="Zip:" for="zip"></p:outputLabel>
+        <p:inputText value="#{s.zip}" id="zip"
+        required="true"
+		requiredMessage="You must enter your zip"
+		validatorMessage="Zipcode should be exactly 5 digits">
+		<p:ajax update="city state" event="keyup" listener="#{s.ajaxcheck}" execute="@all"></p:ajax>
+		<f:validateLength minimum="5" maximum="5"/>
+		<f:validateRegex pattern="[0-9]+" />
+		</p:inputText>
+		<p:message for="zip"></p:message><br/>
+		   			 
+        <p:outputLabel value="City:" for="city" ></p:outputLabel>
+        <p:inputText value="#{s.city}" id="city"
+        required="true"
+        requiredMessage="Enter your city"
+        validatorMessage="Name should contain characters">
+        <f:validateRegex pattern="[A-Za-z]+" />
+        </p:inputText>
+        <p:message for="city"></p:message><br/>
+        
+        <p:outputLabel value="State:" for="state"></p:outputLabel>
+        <p:inputText value="#{s.state}" id="state"
+         required="true"
+        requiredMessage="Enter your State"
+        validatorMessage="Name should contain characters">
+        <f:validateRegex pattern="[A-Za-z]+" />
+        </p:inputText>
+        <p:message for="state"></p:message><br/>
+        
+        
+        
+        <p:outputLabel value="E-mail:" for="em"></p:outputLabel>
+        <p:inputText value="#{s.email}" id="em"
+        required="true"
+		requiredMessage="You must enter your email"
+		validatorMessage="Email should be valid">
+		<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+		</p:inputText>
+		<p:message for="em"></p:message><br/>
+        
+        
+		<p:outputLabel for="phone" value="Phone:" />
+        <p:inputMask id="phone" value="#{s.phone}" required="true" mask="(999) 999-9999"
+		requiredMessage="Missing or incomplete phone number"/>
+		<p:message for="phone"></p:message>  <br/>
+        
+        <p:outputLabel value="Date of Survey:" for="dt"></p:outputLabel>
+        <p:calendar value="#{s.surveyDate}" id="dt" pattern="MM/dd/yyyy"
+        required="true" binding="#{date}"
+		requiredMessage="You must enter your date of survey"
+		validatorMessage="Date of survey survey should have the following pattern: mm-dd-yyyy">
+		
+		 
+		</p:calendar>
+      <p:message for="dt"></p:message>  <br/>
+      
+       <p:outputLabel value="Date of Starting:" for="dt1"></p:outputLabel>
+        <p:calendar value="#{s.startDate}" id="dt1" pattern="MM/dd/yyyy"
+        required="true"
+        validator="#{s.startDateValid}"
+		requiredMessage="You must enter your date of starting"
+		validatorMessage="Date of survey survey should have the following pattern: mm-dd-yyyy">
+		
+		<f:attribute name="date" value="#{date}"/>
+		</p:calendar>
+		
+      <p:message for="dt"></p:message>  <br/>
+       </h:panelGrid>
+      <h:panelGrid columns="2">
+        <p>What do you like most about the campus ?</p>
+        <p:selectManyCheckbox value="#{s.likes}">
+   			<f:selectItem itemValue="Students" itemLabel="Students" />
+   			<f:selectItem itemValue="Location" itemLabel="Location" />
+   			<f:selectItem itemValue="Campus" itemLabel="Campus" />
+   			<f:selectItem itemValue="Atmosphere" itemLabel="Atmosphere" />
+   			<f:selectItem itemValue="Dorms" itemLabel="Dorms" />
+   			<f:selectItem itemValue="Sports" itemLabel="Sports" />
+   		</p:selectManyCheckbox><br/>
+   		
+   		<p>How come you got to know about the University ?</p>
+   		<p:selectOneRadio value="#{s.interests}">
+   			<f:selectItem itemValue="friends" itemLabel="friends"/>
+   			<f:selectItem itemValue="television" itemLabel="television" />
+   			<f:selectItem itemValue="internet" itemLabel="internet" />
+   			<f:selectItem itemValue="others" itemLabel="others" />
+   		</p:selectOneRadio><br/>
+<p>How would you recommend this school to your friends ?</p>
+   		<p:autoComplete value="#{s.menu}"
+   		completeMethod="#{s.completeMenu}"
+   		forceSelection="true"
+   		minQueryLength="1"
+   		required="true"
+   		requiredMessage="You must choose one"></p:autoComplete>
+   		
+   		</h:panelGrid>
+   		<h:panelGrid columns="2">
+   		 <p:outputLabel value="Enter any 10 digits saperated with ' , ' in the box from 1 to 100:"></p:outputLabel>
+        <p:inputText value="#{s.raffle}"></p:inputText><br/>
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+        <p:outputLabel value="Additional Comments:"></p:outputLabel>
+        <p:inputText value="#{s.comments}"></p:inputText><br/>
+        </h:panelGrid>
+        <p:commandButton value="Submit" action="#{s.Submit}" ajax="false"></p:commandButton>
+        <p:commandButton value="Cancel" action="#{s.Cancel}" ajax="false"></p:commandButton>
+   		</h:form>
+</h:body>
+</html>
