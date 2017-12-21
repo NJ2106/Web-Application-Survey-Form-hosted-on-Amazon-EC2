@@ -10,7 +10,7 @@
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>  
         <property name="connection.url">jdbc:mysql://mydbinstance.cm9l4ehvcosw.us-east-1.rds.amazonaws.com/srinivasDB</property>  
         <property name="connection.username">stanneru</property>  
-        <property name="connection.password">Momndad_99</property>  
+        <property name="connection.password">****</property>  
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>  
     		<property name="show_sql">true</property>
     		<property name="current_session_context_class">thread</property>
