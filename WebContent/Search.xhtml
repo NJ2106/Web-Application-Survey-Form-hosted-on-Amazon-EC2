@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Search Records</title>
+</head>
+<h:body>
+<h:form>
+<h:panelGrid columns="2" cellpadding="5">
+First Name:
+<p:inputText value="#{s.fname}" id="Fname"></p:inputText>
+Last Name:
+<p:inputText value="#{s.lname}" id="LName"> </p:inputText> 
+State:
+<p:inputText value="#{s.state}" id="state"></p:inputText> 
+City:
+<p:inputText value="#{s.city}" id="city"></p:inputText>
+      
+</h:panelGrid>
+ <p:commandButton value="Submit" action="#{s.searchRecord}" ajax="false"></p:commandButton>
+ </h:form>
+ <br></br>
+ <h:form>
+<!--  <h:outputText value="#{s.list}"></h:outputText>-->
+<p:dataTable value="#{s.list1}" var="l" border="2" cellspacing="1" cellpadding="1" binding="#{table}">
+<p:column>
+<f:facet name="header">serial Number</f:facet>
+  <h:outputText value="#{table.rowIndex+1}"></h:outputText>
+</p:column>
+
+<p:column>
+<f:facet name="header">Information</f:facet>
+  <h:outputText value="#{l}"></h:outputText>
+</p:column>
+<p:column>
+<f:facet name="header">Delete Records</f:facet>
+<p:commandButton value="Delete Link" action="#{s.DeleteRecord(l)}"></p:commandButton>
+</p:column>
+</p:dataTable>
+</h:form>
+<p>Click<a href="home.xhtml">here </a> to go to main page</p>
+</h:body>
+</html>

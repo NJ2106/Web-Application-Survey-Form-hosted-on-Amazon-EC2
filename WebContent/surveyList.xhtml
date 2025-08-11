@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</h:head>
+<h:body>
+<h:form>
+<!--  <h:outputText value="#{s.list}"></h:outputText>-->
+<p:dataTable value="#{s.list}" var="l" border="2" cellspacing="1" cellpadding="1" binding="#{table}">
+<p:column>
+<f:facet name="header">serial Number</f:facet>
+  <h:outputText value="#{table.rowIndex+1}"></h:outputText>
+</p:column>
+
+<p:column>
+<f:facet name="header">Information</f:facet>
+  <h:outputText value="#{l}"></h:outputText>
+</p:column>
+
+<!--  <p:column>
+<f:facet name="header">Last Name</f:facet>
+	  value="#{s1.lname}"
+</p:column>
+<p:column>
+ <f:facet name="header">Street Address</f:facet>
+	  value="#{s1.saddress}"
+</p:column>
+<p:column>
+ <f:facet name="header">Zip Code</f:facet>
+	  value="#{s1.zip}"
+</p:column>
+<p:column>
+<f:facet name="header">City</f:facet>
+	  value="#{s1.city}"
+</p:column>
+<p:column>
+ <f:facet name="header">State</f:facet>
+	  value="#{s1.state}"
+</p:column>
+<p:column>
+<f:facet name="header">Email</f:facet>
+	  value="#{s1.email}"
+</p:column>
+<p:column>
+<f:facet name="header">Phone Number</f:facet>
+	  value="#{s1.phone}"
+</p:column>
+<p:column>
+<f:facet name="header">Date of Survey</f:facet>
+	  value="#{s1.surveyDate}"
+</p:column>
+<p:column>
+<f:facet name="header">Date of </f:facet>
+	  value="#{s1.startDate}"
+</p:column>
+<p:column>
+<f:facet name="header">Interests</f:facet>
+	  value="#{s1.interests}"
+</p:column>
+<p:column>
+ <f:facet name="header">Recommendation</f:facet>
+	  value="#{s1.menu}"
+</p:column>
+<p:column>
+<f:facet name="header">Raffle Input</f:facet>
+	  value="#{s1.raffle}"
+</p:column>
+<p:column>
+ <f:facet name="header">Comments</f:facet>
+	  value="#{s1.comments}"
+</p:column>-->
+</p:dataTable>
+</h:form>
+<p>Click<a href="home.xhtml">here </a> to go to main page</p>
+</h:body>
+</html>

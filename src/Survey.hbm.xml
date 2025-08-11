@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "srinivas.SOAP.Survey" table = "Survey_Records">
+      
+      <meta attribute = "class-description">
+         This class contains the Survey detail. 
+      </meta>
+      
+      <id name = "id" type = "int" column = "id">
+         <generator class="increment"/>
+      </id>
+      
+      <property name = "firstname" column = "first_name" type = "string"/>
+      <property name = "lastname" column = "last_name" type = "string"/>
+      <property name = "city" column = "city" type = "string"/>
+      <property name="state" column = "state" type = "string" ></property>
+      <property name="zip" column="Zip_Code" type="string"></property>
+      <property name="saddress" column = "Street_Address" type="string"></property>
+      <property name="phone" column = "Phone" type="string"></property>
+      <property name="menu" column="Menu" type="string"></property>
+      <property name="raffle" column = "Raffle" type="string"></property>
+      <property name="comments" column = "Comments" type="string"></property>
+      <property name="email" column="Email" type = "string"></property>
+      <property name="surveyDate" column = "SurveyDate" type = "date"></property>
+      <property name="startDate" column="StartDate" type="date"></property>
+      
+      
+      
+   </class>
+</hibernate-mapping>
